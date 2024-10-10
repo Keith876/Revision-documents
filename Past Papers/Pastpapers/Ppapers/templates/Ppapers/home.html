@@ -1,0 +1,15 @@
+{% extends 'Ppapers/base.html' %}
+
+{% block content %}
+    <h1>Available Papers</h1>
+    <ul class="list-group">
+        {% for document in documents %}
+            <li class="list-group-item">
+                <a href="{{ document.file.url }}" class="btn btn-link">{{ document.title }}</a>
+                <span class="badge bg-secondary">Uploaded by {{ document.uploaded_by.username }} on {{ document.uploaded_at }}</span>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No documents uploaded yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
